@@ -1,0 +1,24 @@
+# virtual environments
+.venv/
+venv/
+env/
+
+# journals / run logs
+journal/
+*.log
+
+# python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# secrets / local env
+.env
+*.key
+
+# OS / editor cruft
+.DS_Store
+.idea/
+.vscode/
