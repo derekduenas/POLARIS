@@ -36,14 +36,16 @@ falls back to the stub and tells you so (it never crashes).
 
 ---
 
-## Deploy to the droplet (NOT via the web console — use SSH/scp or git)
+## Deploy to the droplet
 
-The web console is fine for quick commands but miserable for moving files. Two clean paths:
+The DigitalOcean **web console works fine** for this — the thing to avoid is *hand-pasting
+large files* into it (a browser terminal can truncate a long paste). `git clone` runs
+perfectly in the console, so the repo path sidesteps that entirely. Two clean ways in:
 
 **Option A — git (recommended; lets your real NULLIUS live beside the floor):**
 ```bash
-# locally: put this folder + your full NULLIUS package in a private repo, then on the droplet:
-ssh you@droplet
+# locally: put this folder + your full NULLIUS package in a private repo, then on the droplet
+# (web console OR ssh — either works):
 git clone <your-private-repo> polaris && cd polaris
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
@@ -52,7 +54,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 python floor.py --mode live-agent --weeks 1      # watch the agents actually propose
 ```
 
-**Option B — scp a single folder:**
+**Option B — scp from your own machine (if you'd rather not use a repo):**
 ```bash
 scp -r ./polaris_floor you@droplet:~/polaris_floor
 ssh you@droplet 'cd polaris_floor && python3 -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt && python floor.py --mode dry'
