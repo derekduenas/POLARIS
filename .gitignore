@@ -1,24 +1,17 @@
-# virtual environments
+# venv / env
 .venv/
 venv/
-env/
+.env
 
-# journals / run logs
+# generated at runtime — not source
 journal/
+cron.log
 *.log
 
-# python caches
+# python cache
 __pycache__/
-*.py[cod]
-*$py.class
-.pytest_cache/
-.mypy_cache/
+*.pyc
+*.pyo
 
-# secrets / local env
-.env
-*.key
-
-# OS / editor cruft
+# os
 .DS_Store
-.idea/
-.vscode/
